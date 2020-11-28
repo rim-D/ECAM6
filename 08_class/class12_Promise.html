@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / Promise</title>
+    <script>
+      // resolve, reject에 값을 전달, 하나의 파라미터만 사용
+
+      function xxx(param){
+          return new Promise(function(resolve, reject){
+              console.log("1");
+              if(param == "ok"){
+                  resolve([100, 200]);
+              }else{
+                  reject({key: "홍길동", key2: 20});
+              }
+              console.log("2");
+          })
+      };
+
+      //const result  = xxx("ok");
+      const result  = xxx("ok2");
+      console.log(result);
+      result.then(function(x){
+          console.log("success" + x[0]);
+          console.log("success" + x[1]);
+      }, function(x){
+          console.log("fail" + x.key);
+          console.log("fail" + x.key2);
+      });
+
+      console.log("end");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

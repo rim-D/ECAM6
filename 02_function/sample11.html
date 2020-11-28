@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//generator함수  yield수만큼 next호출 : next 실행 yield 결과 리턴, yield가 수행되면 false
+	//수행되지 않으면 false리턴 
+	function* aaa(n, n2) {
+		console.log("1");
+		yield n+n2;
+		yield "홍길동";	
+		console.log("3");
+	}
+	var g= aaa(10,20);
+	console.log(g);
+	var data=g.next();
+	console.log(data); //{value:30, done:false}
+console.log(g.return()); //함수종료 
+	var data2= g.next();
+	console.log(data2); //{value:undefined, done: true}
+	console.log("==================");
+	var data3= g.next();
+	console.log(data3); //{value:undefined, done: true}
+</script>
+</head>
+<body>
+
+</body>
+</html>

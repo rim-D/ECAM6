@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / constructor</title>
+    <script>
+        // 클래스 인스턴스를 생성하고 생성한 인스턴스를 초기화 역할
+        // 오버로딩 생성자 안됨
+        // 반드시 단 한개의 생성자만 지정가능
+        // 1. 클래스 선언식
+        class Person {
+            // 생성자 => 반드시 하나, 이름은 반드시 constructor
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+            }
+            set setName(name){
+                this.name = name;
+            }
+            set setAge(age){
+                this.age = age;
+            }
+            get getName(){
+                return this.name;
+            }
+            get getAge(){
+                return this.age;
+            }
+        }
+
+        // 2.객체 생성
+        const p = new Person("김상순", 36); // 기본 생성자 호출
+        console.log(p.name);
+        console.log(p.age);
+
+        p.setName = "펭수"; // 변수처러 사용가능
+        p.setAge = 20;
+        console.log(p.name);
+        console.log(p.age);
+
+        p.name = "이효리";
+        p.age = 32;
+        console.log(p.name);
+        console.log(p.age);
+
+        const p2 = new Person();
+        console.log(p2);
+
+
+
+        class Person1 {
+            // 생성자 => 반드시 하나, 이름은 반드시 constructor
+            constructor(name, age){
+                this.name = name;
+                this.age = age;
+                return {name: 'peng', age:100}; // 리턴값 반환
+            }
+            set setName(name){
+                this.name = name;
+            }
+            set setAge(age){
+                this.age = age;
+            }
+            get getName(){
+                return this.name;
+            }
+            get getAge(){
+                return this.age;
+            }
+        }
+
+        // 2.객체 생성
+        const p1 = new Person1("김상순", 36); // 기본 생성자 호출
+        console.log(p1.name);
+        console.log(p1.age);
+
+        p1.setName = "펭수"; // set, get이 사용이 안됨
+        p1.setAge = 20;
+        console.log(p1.name);
+        console.log(p1.age);
+
+        p1.name = "이효리"; 
+        p1.age = 32;
+        console.log(p1.name);
+        console.log(p1.age);
+
+        const p3 = new Person1();
+        console.log(p3);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

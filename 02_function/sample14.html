@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function* a() {
+		var bbb= yield "A";
+		var aaa= yield "B";
+		console.log(aaa, bbb);
+	}
+	var x=a();
+	console.log(x.next()); //{value:"A", done:false}
+	console.log("x=================");
+	console.log(x.next(2000)); //bbb에 2000저장  {value:"B", done:false}
+	console.log("x=================");
+	console.log(x.next(3000));  //aaa에 3000저장 {value:undefined, done : undefined}
+	console.log("x=================");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

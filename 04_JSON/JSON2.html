@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json 객체</title>
+    <script>
+        // var person = {
+        //     name: "홍길동",
+        //     age: 20,
+        //     getName: function(){
+        //         return this.name;
+        //     },
+        //     setName: function(n){
+        //         this.name = n;
+        //     },
+        //     getAge: function(){
+        //         return this.age;
+        //     },
+        //     setAge: function(a){
+        //         this.age = a;
+        //     }
+        // }
+
+        // console.log(person.name, person.age);
+        // person.setName("이순신");
+        // person.setAge(44);
+        // console.log(person.name, person.age);
+        // console.log(person.getName(), person.getAge());
+
+
+        // json 객체 ====> ECMA6
+        // var person = {
+        //     name: "홍길동",
+        //     age: 20,
+        //     getAge(){ return this.age },
+        //     setAge(n){ this.age = n },
+        //     getName(){ return this.name },
+        //     setName(n){ this.name = n }
+        // }
+
+        // console.log(person.name, person.age);
+        // person.setName("이순신");
+        // person.setAge(44);
+        // console.log(person.name, person.age);
+        // console.log(person.getName(), person.getAge());
+
+
+        // json 객페 ====> ECMA6, get/set ===> .(dot)로 접근
+        var person = {
+            name: "홍길동",
+            age: 20,
+            get getAge(){ return this.age }, // function()생략, get추가
+            set setAge(n){ this.age = n }, // set주의
+            get getName(){ return this.name },
+            set setName(n){ this.name = n }
+        }
+
+        console.log(person.name, person.age);
+        person.setName = "이순신"; // .setName("이순신") => setName = "이순신" 마치 변수처럼 사용가능
+        person.setAge = 44;
+        console.log(person.name, person.age);
+        console.log(person.getName(), person.getAge());
+
+    </script>
+</head>
+<body>
+     json 객체
+</body>
+</html>

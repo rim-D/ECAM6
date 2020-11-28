@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / map</title>
+    <script>
+      
+        // map인스턴스를 반복할 때 특별한 callback
+        const map = new Map();
+
+        map.set("one", 100);
+        map.set(1, 200);
+        map.set(false, 300);
+
+        map.forEach(function(v, k, m){ // value, key, map
+            console.log(v, k, m);
+        });
+
+        const result = map.delete("one"); // true
+        console.log("result === ", result);
+        console.log(map.delete("two")); // false
+
+        // map.clear() 모든 entry삭제
+        map.clear();
+        console.log(map);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

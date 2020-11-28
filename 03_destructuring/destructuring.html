@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디스트럭처링</title>
+    <script>
+        var m = [10, 20];
+        var [x, y] = [10, 20];
+        console.log(x,y); // 10, 20
+        
+        var [k, k2, k3] = [10, 20];
+        console.log(k, k2, k3); // 10, 20, undefined
+
+        var [k, k2, k3=100] = [10, 20];
+        console.log(k, k2, k3); // 10, 20, 100
+
+        var k, k2, k3;
+        [k, k2, k3] = [9, 8, 7];
+        console.log(k, k2, k3); // 9, 8, 7
+
+        var m = [10, 9, [100, 200]];
+        var a, a2, a3, a4;
+        [a, a2, a3, a4] = [10, 9, [100, 200]];
+        console.log(a, a2, a3, a4); // 10, 9, [100, 200]
+
+        // rest연산자 ...n
+        var [a, b, ...c] = [9,8,7,6,5,4];
+        console.log(a, b, c);
+
+        // 변수 생략
+        var [,,,,n] = [10, 9, 8, 7, 6];
+        console.log(n); 
+
+        // 함수의 파라미터 destruturing
+        function aaa(n){
+            var [k, k2] = n; // 분할할당
+            console.log(k + k2);
+        }
+        aaa([10, 20]);
+
+        // var sum = function([k, k2]){
+        //     return k + k2;
+        // }
+        // console.log(sum([10, 20]));
+
+        var sum = ([k, k2]) => k + k2;
+        console.log(sum([10, 20]));
+    </script>
+</head>
+<body>
+    디스트럭처링: 객체의 구조를 해체한다 => 분해(배열, 객체)
+</body>
+</html>

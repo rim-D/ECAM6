@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//generator함수  yield수만큼 next호출 : next 실행 yield 결과 리턴, yield가 수행되면 false
+	//수행되지 않으면 false리턴 
+	function* a(n, n2) {
+		console.log("1");
+		yield n+n2;
+		yield "홍길동";	
+		console.log("3");
+	}
+	var x= a(10, 20);
+	console.log(x.next());
+	console.log(x.return());
+	console.log(x.next());
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//주의 
+	let a= ()=>{}; 
+	console.log(a()); //undefined {} 실행블럭으로 인식
+	a=()=>({key:"홍길동"});  //({})사용 json객체로 인식시킴
+	console.log(a()); //object출력
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

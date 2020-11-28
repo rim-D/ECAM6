@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+       // copyWithin(a, [b,c]) index범위의 값을 복사 
+       // a: 복사된 값을 설정 idx, 
+       // b: 복사하기 위한 시작 idx
+       // c: 복사하기 위한 끝 idx
+
+       //1.
+        var arr = [1, 2, 3, 4, 5];
+        let copyArr = arr.copyWithin(0);
+        console.log(copyArr); // 1, 2, 3, 4, 5
+
+        //2.
+        var arr = [1, 2, 3, 4, 5];
+        let copyArr1 = arr.copyWithin(0, 3);
+        console.log(copyArr1); // 4, 5, 3, 4, 5
+
+
+        //3.
+        var arr = [1, 2, 3, 4, 5];
+        let copyArr2 = arr.copyWithin(2);
+        console.log(copyArr2); // 1, 2, 1, 2, 3
+
+
+        //4.
+        var arr = [1, 2, 3, 4, 5];
+        let copyArr3 = arr.copyWithin(1, 0, 3);
+        console.log(copyArr3); // 1, 1, 2, 3, 5
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

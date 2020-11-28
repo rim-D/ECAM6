@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / Promise</title>
+    <script>
+      // then메소드의 체인
+      function hello(param){
+          return new Promise(function(resolve, reject){
+              console.log("1");
+              //resolve();
+              reject();
+              console.log("2");
+          })
+      };
+
+      hello().then(function(){
+          console.log("success1");
+          return "펭수";
+      }).then(function(x){
+        console.log("success2" + x);
+        return "안녕하세요" + x;
+      }).then(function(x){
+        console.log("success3" + x);
+      }, function(){
+          console.log("fail");
+      });
+
+      console.log("end");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

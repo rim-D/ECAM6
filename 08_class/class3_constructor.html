@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / constructor</title>
+    <script>
+        // new.target속성, new.target.name속성
+        // new.target은 constructor를 참조함
+        // new.target.name은 클래스의 이름
+        // 1. 클래스 선언식
+        class Person {
+            // 생성자 => 반드시 하나, 이름은 반드시 constructor
+            constructor(name, age){
+                console.log(new.target);
+                console.log(new.target.name);
+            }
+            set setName(name){
+                this.name = name;
+            }
+            set setAge(age){
+                this.age = age;
+            }
+            get getName(){
+                return this.name;
+            }
+            get getAge(){
+                return this.age;
+            }
+        }
+
+        // 2.객체 생성
+        const p = new Person("김상순", 36); // 기본 생성자 호출
+        console.log(p.name);
+        console.log(p.age);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

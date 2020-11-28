@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / 상속</title>
+    <script>
+       // 상속
+       class Employee { // 부모 클래스 name, salary
+            constructor(name, salary){
+                this.name = name;
+                this.salary = salary;
+            }
+            setName(name){
+                this.name = name;
+            }
+            setSalary(salary){
+                this.salary = salary;
+            }
+            getName(){
+                return this.name;
+            }
+            getSalary(){
+                return this.salary;
+            }
+       }
+
+       // 상속
+       class Manager extends Employee{ // 부모 클래스 name, salary + 자식 클래스 depart
+           constructor(name, salary, depart){
+               super(name, salary); // 부모 생성자 명시적 호출 필수
+               this.depart = depart;
+           }
+           setDepart(depart){
+               this.depart = depart;
+           }
+           getDepart(){
+               return this.depart;
+           }
+       }
+
+       const man = new Manager("펭수", 1000, "인사"); //자식 생성자
+       
+       console.log(man.getName());
+       console.log(man.getSalary());
+       console.log(man.getDepart());
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

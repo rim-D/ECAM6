@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+        // {key:value}객체 특징 -> array - like 객체
+        let x = {0:"이효리", 2:"유재석", length:3};
+        console.log(x, Array.isArray(x));
+        console.log(x[0], x[1], x[2], x.length); // 이효리 undefined 유재석 3
+
+
+        // 1. 첫번째 인자는 array-like 객체 또는  iterable 객체지정
+        let arr = Array.from('hello'); // "h","e","l","l","o"배열
+        console.log(arr, arr[0]);
+
+
+        // 2. 두번째 인자는 배열생성하면서 수행되는 함수 지정
+        let arr2 = Array.from("world", function(v){
+            console.log("======>", v);
+        });
+
+
+        // 3. 세번째 인자는 함수 내에 this사용시 참조할 객체 지정
+        let arr3 = Array.from("happy", function(v){
+            console.log("------>", v);
+            return v + this.msg; // this는 세번째 인자
+        }, {msg:"값"});
+        console.log(arr3);
+
+
+        // 4. array-like 객체 지정
+        let arr4 = Array.from({0:100, 1:200, length: 2});
+        console.log(arr4[0], arr4[1], arr4.length);
+
+
+        // 5. Array.of() - 새로운 Array객체를 생성
+        let arr5 = Array.from("hello");
+        console.log(arr5);
+
+
+        // 6. from에서 3번째 인자로 지정된 객체를 참조함 this사용시
+        let obj = {aaa:100};
+        let arr6 = Array.from("hello", function(v, i){
+            console.log("*********", v, i, this.aaa); // "h!!!","e!!!","l!!!"..배열로 출력
+            return v + "!!!"; 
+        }, obj);
+        console.log(arr6);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

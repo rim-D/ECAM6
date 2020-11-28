@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / map</title>
+    <script>
+      
+        // key / value쌍으로 데이터 저장
+        // map객체는 순서 보장
+
+        // 1. 객체 생성
+        const map = new Map();
+
+        // 2. 정보보기
+        console.log(map);
+
+        // 3. 데이터 저장 .set()
+        map.set("one", 100);
+        map.set(1, 200);
+        map.set(false, 300);
+
+        // 4. 데이터 출력 .get()
+        console.log(map.get("one"));
+        console.log(map.get(1));
+        console.log(map.get(false));
+
+        // 4. 데이터 출력 .entries
+        const data = map.entries();
+        console.log(data.next());
+        console.log(data.next());
+        console.log(data.next());
+
+        // 4. 데이터 출력 .keys 키를 반환하는 {value: 키값, done: 불린값}
+        const data1 = map.keys();
+        console.log(data1.next());
+        console.log(data1.next());
+        console.log(data1.next());
+
+        // 4. 데이터 출력 .values 추가한 순서로 value가져옴
+        const data2 = map.values();
+        console.log(data2.next().value);
+        console.log(data2.next());
+        console.log(data2.next());
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

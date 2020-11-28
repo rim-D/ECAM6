@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//... unpacking 하는 spread 연산자
+	var n= [1,2,3,[4,5,6]];
+	console.log(n);
+	var n2= [1,2,3,...[10,9,8,7]]; //배열을 펼쳐서 사용
+	console.log(n2);
+	//응용1 -배열복사
+	var x= [1,2,3];
+	var x2=[...x];//배열의 복사
+	console.log("x=", x, "x2=", x2);
+	
+	//응용2 - 배열연결
+	var k=[1,2,3];
+	var k2= [4,5,6];
+	var k3=[...k, ...k2];
+	console.log("k3=", k3);
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json 객체</title>
+    <script>
+       // for ~ of 실제값 배열로 반환
+       let a = [10, 20, 30];
+       for(let i of a) {
+           console.log("of ----> ", i);
+       }
+
+       let b = "Hello";
+       for (let i of b) {
+           console.log("of ----> ", i);
+       }
+
+
+       // for ~ in 인덱스값 반환
+       let c = [10, 20, 30];
+       for(let i in c) {
+           console.log("in ----> ", i);
+       }
+
+       let d = "Hello";
+       for (let i in d) {
+           console.log("in ----> ", i);
+       }
+
+
+       // iterable 객체가 아닌 json객체는 for ~of 사용불가
+       let e = {one:100, two:200};
+
+    //    for( let i of e ){ // 에러 발생
+    //        console.log("of", i); 
+    //    }
+    for( let i in e ){ // json객체에 사용 가능
+           console.log("in", i); // one, two
+       }
+
+    </script>
+</head>
+<body>
+     json 객체
+</body>
+</html>

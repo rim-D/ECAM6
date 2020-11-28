@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//arrow함수 사용시 유의 사항  객체의 메서드를 생성할 때는 => 사용하지 않는다. 
+console.log(this) //window
+this.num=10;//동적으로 추가가능
+this.info= function() {
+	console.log("info()=======");
+}
+
+//delete this.num;
+this.n=1000; //windows.n
+var x= {   //x JSon객체 참조
+		n:200,   
+		n2: function() {console.log("x", this.n); }//json객체의 n
+		}
+x.n2();  //Json객체의 함수 호출 
+var x2= {
+		n:300,
+		n2: ()=> {console.log("x2", this.n);}//windows의  n 참조 1000출력
+	};
+x2.n2();
+
+
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

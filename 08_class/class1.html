@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class</title>
+    <script>
+
+        // 1. 클래스 선언식
+        class Person {
+            setName(name){
+                this.name = name;
+            }
+            setAge(age){
+                this.age = age;
+            }
+            getName(){
+                return this.name;
+            }
+            getAge(){
+                return this.age;
+            }
+        }
+
+        // 2.객체 생성
+        const p1 = new Person(); // 기본 생성자 호출
+        p1.setName("펭수");
+        p1.setAge(20);
+        console.log(p1.getName());
+        console.log(p1.getAge());
+
+        p1.name = "이효리";
+        p1.age = 32;
+        console.log(p1.getName());
+        console.log(p1.getAge());
+
+
+        console.log("=====================");
+        // 1. 클래스 선언식
+        class Person1 {
+            set setName(name){
+                this.name = name;
+            }
+            set setAge(age){
+                this.age = age;
+            }
+            get getName(){
+                return this.name;
+            }
+            get getAge(){
+                return this.age;
+            }
+        }
+
+        // 2.객체 생성
+        const p2 = new Person1(); // 기본 생성자 호출
+        p1.setName = "펭수"; // 변수처러 사용가능
+        p1.setAge = 20;
+        console.log(p1.getName());
+        console.log(p1.getAge());
+
+        p1.name = "이효리";
+        p1.age = 32;
+        console.log(p1.getName());
+        console.log(p1.getAge());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

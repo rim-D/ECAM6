@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//함수 표현식 ==> arrow함수
+	var x5= function (n) {
+		return n*2;
+	}
+	var result1=x5(10);
+	console.log(result1);
+	//arrow함수
+	var x5= n=> n*2; 
+	var result2= x5(10);
+	console.log("result2====",result2);
+	/////////////////////
+	var x4= function (n) {
+		console.log("함수 표현식 x4호출", n);
+		return n*2;
+	}	
+	var result= x4(10);
+	console.log("result3", result);
+	//arrow함수 
+	var x4= n=>{console.log("arrow함수 x4호출===", n);  return  n*2}; //{}와 로직 구현 및 return 명시
+	var result= x4(10);
+	console.log(result);
+	
+	////////////////////////매개변수 여러개 ()생략 불가
+	var x3= function (n, n2) {
+		console.log("함수 표현식 x3호출=====", n, n2);
+	}
+	x3(10,20);
+	//arrow 표현식
+	var x3= (n, n2)=>{ console.log("arrow함수 x3표현식", n, n2);}
+	x3(10,20);
+	///////////////////// 한개의 매개변수 ()생략가능
+	var x2= function (n) {
+		console.log("함수표현식 x2호출", n);
+	}
+	x2(10);
+	//arrow표현식
+	var x2= n=> {console.log("arrow x2표현식", n)}
+	x2(10);
+	///////////////////////
+	var x= function () {
+		console.log("함수 표현식 x호출");		
+	}
+	x();
+	 var x= ()=>{console.log("arrow함수 x호출 ");}
+	 x();
+</script>
+</head>
+<body>
+
+</body>
+</html>

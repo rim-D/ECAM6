@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//문자열과 표현식을 분리하여 파라미터로 전달.
+function aaa2( txt, exp) {
+	console.log(txt, txt[0], exp, txt[1]); 
+}
+let mesg="홍길동";
+aaa2 `world ${mesg}`;
+
+//
+function aaa3(txt ,exp) {
+	console.log(txt, txt[0], exp , txt[1]); //txt에 happy, !!!지정 
+}
+aaa3 `happy ${mesg} !!!`; //txt에 happy, !!! 저장 
+
+//
+function aaa4(txt, exp, exp2) {
+	console.log(txt, txt[0], exp, txt[1], exp2);
+}
+aaa4 `안녕하세요 ${mesg} !!! 건강하세요 ${mesg}`;
+</script>
+</head>
+<body>
+
+</body>
+</html>

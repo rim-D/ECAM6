@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//generator함수  yield블럭단위 수행
+	function* aaa() {
+		console.log('1');
+		yield  console.log('2');
+		console.log('3');
+	}
+	var g= aaa();//객체 저장
+	g.next();
+ 	console.log("======");
+	g.next(); 
+</script>
+</head>
+<body>
+
+</body>
+</html>

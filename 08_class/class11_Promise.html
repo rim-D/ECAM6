@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / Promise</title>
+    <script>
+      // Promise객체 특정작업을 비동기 처리해 주는 객체
+      // 코드가 끝까지 수행하고 나서 resolve() => then의 첫번째 함수 수행
+      // 코드가 끝까지 수행하고 나서 reject() => then의 두번째 함수 수행
+
+      function xxx(){
+          return new Promise(function(resolve, reject){
+              console.log("1");
+              resolve(); // 1, 2, end, success 비동기처리
+              // reject(); // 1, 2, end, fail 비동기처리
+              console.log("2");
+          })
+      };
+
+      xxx().then(function(){
+          console.log("success");
+      }), function(){
+          console.log("fail");
+      };
+
+      console.log("end"); // end까지 수행 후 then의 함수 선별적 호출
+    
+      console.log("=================");
+      function yyy(){
+          return new Promise(function(resolve, reject){
+            console.log("1");
+          });
+      }
+      const result  = yyy();
+      console.log(result);
+      console.log("end");
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

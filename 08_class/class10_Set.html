@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class / map</title>
+    <script>
+      
+        // set: 순서존재, 중복 허용 안함, 내부적으로 배열 관리
+        const set = new Set();
+
+        set.add("one");
+        set.add(100);
+        set.add(false);
+
+        console.log(set.size);
+
+        const data = set.values();
+        console.log(data.next().value);
+        console.log(data.next().value);
+        console.log(data.next().value);
+
+        console.log(set.has("one"));
+        console.log(set.has("two"));
+
+        const data1 = set.entries();
+        console.log(data1.next().value);
+
+        set.forEach(function(v, k, s){
+            console.log(v, k, s);
+        });
+
+        console.log(set.delete("one"));
+        console.log(set.size);
+        set.clear();
+        console.log(set.size);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

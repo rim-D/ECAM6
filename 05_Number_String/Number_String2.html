@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number String/taged template 리터럴</title>
+    <script>
+        // taged template 리터럴
+        // tage `문자열${exp} 문자열`;
+        function aaa(txt, exp) { // txt는 배열로 값이 전달
+            // 배열, 문자열값, 표현식, ...문자열값
+            console.log(txt, txt[0], exp, txt[1]); 
+        }
+        aaa `hello`; // aaa함수 호출 매개변수로 문자를 txt에 전달
+    
+        
+
+        // 문자열과 표현식을 분리하여 파라미터로 전달
+        function aaa2(txt, exp){
+            console.log(txt); 
+            console.log(txt[0]); 
+            console.log(exp); 
+            console.log(txt[1]); 
+        }
+        let msg = "헬로둘리";
+        aaa2 `world ${msg}`;
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

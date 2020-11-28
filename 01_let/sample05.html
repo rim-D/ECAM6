@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var mesg="bb";  //전역변수에 추가
+console.log(this.mesg, window.mesg);
+let mesg2="aa";  //let변수는 전역변수에 추가 되지 않음.
+console.log(this.mesg2, window.mesg2);  //undefined, undefiend
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
