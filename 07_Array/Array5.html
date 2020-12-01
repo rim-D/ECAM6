@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Array prototype 인 forEach 를 활용한 예</h1>
+    <p>배열과 유사배열을 구분해야하는 이유 : 유사배열의 메서드를 쓸 수 없기 때문</p>
+    <ul class="find">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+</body>
+</html>
+<script>
+    const list = document.querySelectorAll("ul.find li");
+
+    console.log( Array.isArray(list) ); // false - 유사배열: []로 감싸져있지만 배열이 아닌 요소
+    // 배열 프로토타입에서 forEach 메서드를 빌려옴 ( call, apply )
+    Array.prototype.forEach.call(list, function(el) { 
+        console.log("Array.prototype===" , el); 
+    });
+
+    [].forEach.call(list, function(li, index) {
+        console.log(li, index);
+    });
+
+    Array.from(list).forEach(function(el, index) { 
+        console.log("from ===", el, index);
+    });
+</script>
