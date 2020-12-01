@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>this</h1>
+    <div class="hello">함수의 this는 기본적으로 window라는 원칙을 따름(클릭!!)</div>
+</body>
+</html>
+<script>
+    const div = document.querySelector(".hello");
+    const thisThat = document.querySelector(".hello");
+    div.addEventListener("click", function(){
+        console.log(this); // <div>
+
+        function inner() { // 함수의 this는 기본적으로 window라는 원칙을 따름
+            console.log("inner==", this); // inner Window
+        }
+        inner();
+    });
+
+    // 해결
+    thisThat.addEventListener("click", function(){
+        console.log(this); // <div>
+
+        const that = this; // this를 변수에 담아 명시적으로 알리기 (call, bind, apply)
+        function box() { // 함수의 this는 기본적으로 window라는 원칙을 따름
+            console.log("inner==", that); // inner Window
+        }
+        box();
+    });
+</script>

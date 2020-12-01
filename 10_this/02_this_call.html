@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>call</h1>
+</body>
+</html>
+<script>
+    // this 기본적으로 window를 가르킴
+    // window를 다른 것으로 바꿀 수 있는 방법
+    // call, apply, bind에서 첫 번째 인자로 다른 것을 넣어주는 게 this를 바꾸는 방법 중 하나
+    function example() {
+        console.log(arguments);
+    };
+
+    example(1, "string", true); // [1, 'stirng', ture]
+    // 생김새는 배열 같아보이지만 배열이 아닌 유사배열!!!
+    // 유사배열은 배열의 메소드를 사용불가
+    function example2() {
+        //console.log(arguments.join());
+    };
+
+    example2(1, "string", true); // Uncaught TypeError: arguments.join is not a function
+
+    // Solution : 유사배열을 배열처럼
+    function example3() {
+        // console.log(Array.property.join.call(arguments)); //로도 사용가능
+        console.log([].join.call(arguments)); 
+        // 배열의 프로토타입에 있는 join함수를 빌려 쓸 수 있음. 
+        // ( join외에도 slice, concat등 모든 메소드를 이 방식으로 적용가능 )
+    };
+
+    example3(1, "string", true); // 1,string,true 조인됨
+
+</script>

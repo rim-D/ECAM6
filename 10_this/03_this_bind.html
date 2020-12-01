@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>bind</h1>
+</body>
+</html>
+<script>
+    const obj = {
+        string: "rim",
+        number: 10,
+        name: function(){
+            alert(this.string);
+        },
+        age: function() {
+            alert(this.number);
+        }
+    };
+    const obj2 = {
+        string: "what?",
+        number: 30
+    };
+    const name2 = obj.name.bind(obj2);
+    name2(); // what?
+    // name 함수의 this(obj)가 obj2로 바뀜
+    // call , apply와 비슷하지만 호출은 하지 않고 함수만 반환
+    // call(this, 1, 2, 3) = bind(this)(1, 2, 3)
+</script>

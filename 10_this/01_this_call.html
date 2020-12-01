@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>call</h1>
+</body>
+</html>
+<script>
+    const example = function(a, b, c) {
+        return console.log(a + b + c);
+    };
+    example(1, 2, 3);
+    example.call(null, 1, 2, 3); // null인자는 this대체
+    example.apply(null, [1, 2, 3]); // null인자는 this대체
+
+
+    const obj = {
+        string: "rim",
+        number: 10,
+        name: function(){
+            alert(this.string);
+        },
+        age: function() {
+            alert(this.number);
+        }
+    };
+    const obj2 = {
+        name: "what?",
+        number: 30
+    };
+    obj.name();    // rim
+    obj.age.call(obj2); // 30
+    // function명.call() 다른 객체의 함수를 자기 것 마냥 사용가능
+
+</script>
