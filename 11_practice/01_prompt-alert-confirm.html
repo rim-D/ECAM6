@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <span id id="order">1</span>번째 참가자
+    </div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+    <script>
+        const num = parseInt(prompt('몇 명이 참가하나요?'));
+        alert(num);
+        const yesOrNo = confirm('맞나요?');
+
+        // input EVENT
+        // 어떤 방법으로든 값을 변경할 때 발생
+        // 마우스를 사용하여 글자를 붙여 넣거나 
+        // 음성인식 기능을 사용해 글자를 입력할 때처럼 키보드가 아닌 
+        // 다른 수단을 사용하여 값을 변경시킬 때도 input 이벤트가 발생
+        document.querySelector('input').addEventListener('input', function (evnet) {
+            console.log('글자입력', event.target.value);
+        });
+        // 콜백, 익명함수라고 불리움
+        document.querySelector('button').addEventListener('click', function () {
+            console.log('버튼 클릭')
+        });
+
+
+        // 함수를 바깥으로 분리하는 방법
+        const onClickButton = () => {
+            console.log('버튼 클릭')
+        }
+        const $button = document.querySelector('button');
+
+        // 태그.addEventListenener
+        // 태그.addEventListnener('이벤트 이름', 리스너 함수);
+        // 어떤 동작을 실행하고 난후에 연이어 실행하는 함수를 콜백함수라고 불림
+        // 함수를 변수로 빼는 건 여러 번 재사용을 하기위해서 빼는 목적
+        // 딱 한번만 사용 시에는 변수로 빼지 않아도 됨
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>첫 번째 사람인지 판단하기</title>
+</head>
+
+<body>
+    <div>
+        <span id="order">1</span>번째 참가자
+    </div>
+    <div>
+        총 참가자<span id="allOrder"></span>수
+    </div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+
+    <script>
+        const num = parseInt(prompt('몇 명이 참가하나요?'));
+        const $button = document.querySelector('button');
+        const $input = document.querySelector('input');
+        const $word = document.querySelector('#word');
+        const $order = document.querySelector('#order');
+        const $allOrder = document.querySelector('#allOrder');
+
+        let word; // 제시어(제시어를 저장할 변수)
+        let newWord; // 새로 입력한 단어(입력한단어를 저장할 변수)
+        let order;
+
+        console.log(num);
+        console.log(isNaN(num));
+
+
+
+        const onClickButton = () => {
+
+            if (!word || word[word.length - 1] === newWord[0]) { // 제시어가 비어 있는가?ㄹㄹㄹ
+                // 비어 있다.
+
+                // 입력한 단어 제시어 표기 (화면 변경)
+                /**
+                 * ! innerText와 textContent 차이
+                 * textContent는 <script>와 <style>요소를 포함한 모든 요소의 콘텐츠를 가져옴
+                 * innerText는 '사람이 읽을 수 있는'요소만 처리 - 리플로우 발생
+                 * input의 값은 value
+                 * span이나 다른 태그는 textContent로 값을 변경 가능
+                 */
+                word = newWord;
+                $word.textContent = word;
+
+                const order = Number($order.textContent);
+                if (order + 1 > num) {
+                    $order.textContent = 1;
+                } else {
+                    $order.textContent = order + 1;
+                }
+            } else {
+                // 비어 있지 않다. || 입력한 단어가 올바르지 않다면(판단 기준)
+                // 제시어의 끝 글자가 맞는지 아닌지로 검토
+                alert('올바르지 않는 단어입니다.');
+            }
+            $input.value = ''; // input값 초기화
+            $input.focus(); // input값의 커서 포커스 처리
+        }
+
+        const onInput = (event) => {
+            newWord = event.target.value;
+        };
+
+        $button.addEventListener('click', onClickButton);
+        $input.addEventListener('input', onInput);
+
+
+
+    </script>
+</body>
+
+</html>
