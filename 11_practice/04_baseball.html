@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>숫자 야구</title>
+</head>
+
+<body>
+    <!-- 
+    5장 반복문 사용하기
+    숫자야구 게임
+
+    먼저 상대편이 숫자 1-9중에서 중복되지 않게 네 개를 고릅니다.( 더 어렵게 만들려면 0을 포함해도 됨)
+    10번의 기회가 주어지고 상대편이 고른 숫자 네 개를 맞히면 됩니다.
+    이때 숫자만 맞히는 것이 아니라 숫자의 순서까지 맞혀야 합니다. 기회가 적은 대신,
+    틀릴 때마다 힌트를 줍니다. 맞힌 숫자의 개수(볼), 숫자뿐만 아니라 순서까지 맞힌 개수(스트라이크)를
+    알려줍니다.
+
+    예를 들어, 상대편이 5728을 뽑았다고 가정해 봅시다.
+    플레이어가 7129를 말한다면, 상대는 1스트라이크, 1볼이라고 말해줍니다.
+    7은 숫자만 맞혔으니 볼이고, 2는 숫자에 순서(세 번째)까지 맞혀서 스트라이크입니다.
+    마찬가지로 플레이어가 7528을 말한다면, 2스트라이크 2볼이 되고,
+    7285를 말한다면 4볼이 됩니다. 5728을 말한다면 4스트라이크(홈런)가 되어 이기게 됩니다.
+    그리고 10번의 기회 안에 맞히지 못한다면 상대편이 승리합니다.
+    이 게임은 스트라이크와 볼이라는 용어가 사용되어서 숫자야구라는 이름이 붙은 것이지 실제로는 야구와
+    아무 관련이 없습니다.
+
+
+    ex)
+    3 1 4 6   -
+    
+    1 2 3 4   - 3볼               1. 숫자는 맞고, 숫자 위치는 안 맞을 경우 볼
+    3 5 6 7   - 1스트라이크 1볼   2. 숫자, 숫자 위치까지 맞으면 스트라이크
+    2 5 8 9   - 아웃              3. 숫자, 숫자 위치까지 모두 안 맞으면 아웃
+    3 1 4 5   - 홈런              4. 숫자, 숫자 위치까지 모두 다 맞으면 홈런
+
+ -->
+
+    <form action="" id="form">
+        <p>4자리 숫자를 입력해주세요.</p>
+        <input type="text" name="" id="input" minlength="4" maxlength="4" pattern="^(!.*(.).*\1)\d{4}$">
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+
+    <script>
+        // Math.round() -> 반올림
+        // Math.celi() -> 올림
+        // Math.floor() -> 버림
+        const $input = document.querySelector('#input');
+        const $form = document.querySelector('#form');
+        const $logs = document.querySelector('#logs');
+
+        //console.log(Math.floor(Math.random() * 9 + 1)); // 1 ~ 9 정수
+
+        // 배열을 쓸지 중괄호(객체)를 쓸지 고민될 때(판단 기준)
+        // 배열은 단순히 값들만 모아둘 때
+        // 각각의 값에 속성 이름을 붙여서 구분해야할 때는 객체를 사용
+        const numbers = []; // [1,2,3,4,5,6,7,8,9]
+        for (let n = 0; n < 9; n++) {
+            numbers.push(n + 1);
+        }
+
+        const answer = [];
+        for (let n = 0; n < 4; n++) {
+            const index = Math.floor(Math.random() * numbers.length); // 0~8 정수
+            answer.push(numbers[index]); // numbers에서 랜덤으로 숫자 4개 초이스
+            numbers.splice(index, 1); // 배열의 기존 요소를 삭제 또는 교체하거나 새 요소 추가하여 배열 내용 변경
+        }
+        console.log('numbers===', numbers); // [2, 5, 6, 7, 8, 9]
+        console.log('answer===', answer); // [3, 1, 4, undefined] -> numbers의 수는 줄어들지만 랜덤수는 안 줄어들어서 발생하는 버그
+
+
+        const tries = [];
+        function checkInput(input) { // 3146, 314, 3144
+            if (input.length !== 4) { // 길이는 4가 아닌가
+                return alert('4자리 숫자를 입력해 주세요.'); // alert의 return값은 undefinde임 
+            }
+            if (new Set(input).size !== 4) { // 중복된 숫자가 있는가 //Set은 중복된 값 지우고 담김
+                return alert('중복되지 않게 입력해 주세요.');
+            }
+            if (tries.includes(input)) { // 이미 시도한 값은 아닌가
+                return alert('이미 시도한 값입니다.');
+            }
+            return true;
+        }
+
+        // form의 기본동작은 새로고침 되는 것이지만
+        // form의 새로고침 되는 기능을 끌 수 있음!!!
+        $form.addEventListener('submit', (event) => {
+            event.preventDefault(); // 기본 동작막기
+            console.log(event.target[0]); // 마크업 순서로 event.target[index]로도 value접근가능
+            console.log(event.target[1]); // target이 없을 시 undifined처리됨
+            console.log('서브밋');
+
+            const value = $input.value; // 변수에 저장하고
+            
+            $input.value = ''; // 화면의 값 지우기
+            
+            // 검사하는 코드
+            if (checkInput(value)) {
+                // 입력값 문제없음
+                tries.push(value);
+            } else {
+                // 입력값 문제있음
+            }
+            
+
+        });
+    </script>
+
+</body>
+
+</html>
