@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>1. 함수형프로그래밍개요</title>
+</head>
+<body>
+
+  <script>
+
+    /** 순수 함수 x */
+    var obj1 = { val: 10 };
+    function add1(obj, b) {
+      obj.val += b; // 직접 인자로 들어온 상태를 직접 변경하는 함수
+    }
+
+    console.log( obj1.val ); // 10
+    add1(obj1, 20);
+    console.log( obj1.val ); // 30
+
+
+    /** 순수 함수 */ 
+    // 항상 동일한 인자를 넣으면 항상 동일한 결과를 리턴
+    // 평가시점이 중요하지 않음
+    var obj1 = { val: 10 };
+    function add2(obj, b) {
+      return { val: obj.val + b } // value가 더 해진 값을 리턴(obj.val은 obj1을 참조만 할뿐 직접 상태 관여x)
+    }
+
+    console.log( obj1.val ); // 10
+    var obj2 = add2(obj1, 20);
+    console.log( obj1.val ); // 10
+    console.log(obj2.val); // 30;
+
+
+    /** 일급 함수 */
+    // 일급 객체: 변수나 데이터에 할당 가능, 인자로 넘기기 가능, 리턴값으로 리턴하기 가능
+    // 함수가 다른 일급 객체와 동일하게 다루어 질때 일급함수라고 지칭(함수를 값으로 다룰 수 있음)
+    // 함수를 다른 함수에 매개변수로 제공
+    // 함수가 함수를 반환 가능
+    // 함수를 변수에도 할당 가능
+    var f1 = function(a) { return a * a};
+    console.log(f1); // 변수에 함수가 담김
+
+    var f2 = add2;
+    console.log(f2);
+
+    function f3(f) {
+      return f();
+    }
+    console.log( f3(function() { return 10; }) ); // 함수를 받아서 함수 내부에서 함수를 평가한 다음에 return함
+
+
+
+    /** add_maker */
+    // 일급함수 + 클로저 함께 사용된 예제
+    function add_maker(a) { // a는 변수이지만 
+      console.log('a===', a);
+      return function(b) { // 클로저 개념 // 여기에선 a는 참조만 할 뿐 a를 사용하지 않음
+        console.log('b===', b);
+        return a + b;
+      }
+    }
+
+    var add10 = add_maker(10); // add10에 함수를 
+    // 위의 코드는 아래와 동일
+    // var add10 = function(b){
+    //   return a + b;
+    // }
+
+    console.log( 'add10===', add10(20) );
+
+    var add5 = add_maker(5);
+    var add15 = add_maker(15);
+
+    console.log( 'add5===', add5(20) );
+    console.log( 'add15===', add15(20) );
+
+
+    // 함수들을 인자로 받아서
+    // 자기가 원하는 대로 평가시키고 어떠한 로직을 만든 함수
+    function f4(f1, f2, f3) {
+      return f3( f1() + f2() );
+    }
+
+    console.log(
+      'f4 return ==== ',
+      f4 (
+        function() { return 2; },
+        function() { return 10; },
+        function(a) { return a * a }
+      )
+    );
+    
+
+
+
+  </script>
+</body>
+</html>
