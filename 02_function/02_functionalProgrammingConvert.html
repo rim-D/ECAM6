@@ -125,8 +125,62 @@
 
 
   // 3. each만들기
+    // 1. _each로 _map, _filter 중복 제거
+    // .map, .filter와 같은 메소드는 배열에서만 사용할 수 있는
+    // 메서드이기때문에 유사배열을 필터링하고 싶거나 매치 시키고 싶을땐
+    // 메서드를 사용할 수 없어 다형성이 떨어진다.
+    console.log(
 
+        [1, 2, 3].map(function(val) {
+          return val * 2;
+        })
 
+      );
+    console.log(
+
+      [1, 2, 3].filter(function(val) {
+        return val % 2;
+      })
+
+    );
+
+    // 2. 외부 다형성
+      // 1. array_like, arguments, document.querySelectorAll
+      // 함수형 프로그래밍은 다형성을 높여준다.
+      // 배열뿐만아니라 유사배열도 문제없이 사용가능
+    console.log(document.querySelectorAll('*'));
+    console.log(
+      _map(document.querySelectorAll('*'), function(node) {
+        return node.nodeName;
+      })
+    )
+      
+    // 3. 커링
+    // f(a, b, c)처럼 단일 호출로 처리하는 함수를 f(a)(b)(c)와 같이 
+    // 각각의 인수가 호출 가능한 프로세스로 호출된 후 병합되도록 변환하는 것
+      // 1. _curry, _currur
+
+      function _curry(fn) {
+        console.log(fn);
+        return function (a) {
+          console.log(a);
+          return function (b) {
+            console.log(a, b);
+            return fn(a, b);
+          }
+        }
+      }
+
+      var add = _curry(function(a, b) {
+        console.log('a===', a, 'b===', b);
+        return a +  b;
+      });
+
+      var add10 = add(10);
+      console.log(add10(5));
+
+      console.log(add(5)(3));
+      // 2. _get만들어 좀 더 간단하게 하기
   </script>
 </body>
 </html>
