@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * accumulator (
+     *  accumulated, // 콜백에서 반환한 누적 value
+     *  currentValue, // 현재 value
+     *  currentIndex, // 현재 index
+     *  context // reduce를 호출한 현재 배열
+     * )
+     * 
+     * 
+     * reduce 활용
+     * 1. 배열 요소들을 하나의 결과로 합치는(합계 구하는) 용도로 많이 사용
+     */
+
+    const arr1 = [1,2,3,4,5];
+    const result = arr1.reduce((acc, cur, index) => acc +cur );
+    console.log(result);
+
+
+    // 필터링과 값 매핑을 filter + map 하는 예제
+    const result2 = 
+    [2,4,5,6,8].filter(val => val%2 === 0)
+               .map(val => val*10);
+    console.log(result2);
+               
+    // 루프 한번에 filter, map 완료
+    const result3 =
+    [2,4,5,6,8].reduce((acc, val) => {
+      if(val%2 === 0) {
+        acc.push(val * 10);
+      }
+      return acc;
+    }, []);
+    console.log(result3);
+
+
+
+  </script>
+</body>
+</html>
