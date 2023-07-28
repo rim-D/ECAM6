@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    let userList = [
+      {name: "Mike", age: 10},
+      {name: "Jeny", age: 22},
+      {name: "Sohee", age: 45},
+      {name: "Jack", age: 33},
+    ]; 
+
+    const newUserList = userList.map((user, idx) => { // 원본 훼손 없이 값을 복제하여 값 삽입
+      return Object.assign({}, user, {
+        id: idx + 1,
+        isAult: user.age > 22
+      });
+    })
+
+    console.log(newUserList);
+    console.log(userList);
+
+  </script>
+
+</body>
+</html>
