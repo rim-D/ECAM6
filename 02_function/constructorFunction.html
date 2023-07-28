@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>생성자 함수</title>
+</head>
+<body>
+  <script>
+    function User(name, age) {
+      // this = {}; // code에 작성하지도 않아도 나중에 new로 호출하면 알고리즘으로 생성해줌
+      this.name = name; // 초기화
+      this.age = age;   // 초기화
+      this.sayName = function() { // 메소드
+        console.log(this.name); 
+      }
+      // return this;  // code에 작성하지도 않아도 나중에 new로 호출하면 알고리즘으로 생성해줌
+    }
+
+    let user1 = new User('Mike', 12);
+    let user2 = new User('Jisu', 22);
+
+    user2.sayName(); // User의 메소드 실행 'Jisu'
+  </script>
+</body>
+</html>
