@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>object Methods - 객체 메소드</title>
+</head>
+<body>
+  <script>
+  /**
+   * Methods
+   * 
+   * Object.assign() // 객체 복제  - 참조값까지 복사는 NO
+   * Object.keys()
+   * Object.values()
+   * Object.entries()
+   * Object.fromEntries()
+   */
+
+   const user = {
+    name: 'Mike',
+    age: 30
+   }
+
+   const newUser = Object.assign({}, user); // 초기값, 복사할 객체 (객체들이 초기값에 병합됨)
+
+   newUser.name = 'Tom';
+
+   console.log('user ===', JSON.stringify(user), 'newUser ===', JSON.stringify(newUser));
+   // user === {"name":"Mike","age":30} newUser === {"name":"Tom","age":30}
+
+   const newUser2 = Object.assign({ gender: 'male' }, user); // 객체 요소 추가
+   console.log('user ===', JSON.stringify(user), 'newUser ===', JSON.stringify(newUser), 'newUser2 ===', JSON.stringify(newUser2));
+   // user === {"name":"Mike","age":30} newUser === {"name":"Tom","age":30} newUser2 === {"gender":"male","name":"Mike","age":30}
+   
+   const newUser3 = Object.assign({ name: 'Jany', gender:'male' }, user); // 동일한 key값은 원본값으로 출력됨
+   console.log(JSON.stringify(newUser3)); // {"name":"Mike","gender":"male","age":30}
+   console.log('user ===', JSON.stringify(user), 'newUser ===', JSON.stringify(newUser), 'newUser2 ===', JSON.stringify(newUser2), 'newUser3 ===', JSON.stringify(newUser3));
+   // user === {"name":"Mike","age":30} newUser === {"name":"Tom","age":30} newUser2 === {"gender":"male","name":"Mike","age":30} newUser3 === {"name":"Mike","gender":"male","age":30}
+   
+
+
+   const user2 = {
+    name: 'Hei',
+    age: 35,
+    sex: 1,
+   }
+
+   const info1 = {
+    gender : user2.sex == 1 ? '남' : '여'
+   }
+
+   const info2 = {
+    alias : 'nick'
+   }
+
+   const newUser4 = Object.assign(user2, info1, info2); // user2가 초기값이고, info1, info2가 user2에 합쳐짐
+   console.log(JSON.stringify(newUser4)); // {"name":"Hei","age":35,"sex":1,"gender":"남","alias":"nick"}
+
+   // user2로 초기값을 설정 시에는 원본값 변경
+   console.log(JSON.stringify(user2)); // {"name":"Hei","age":35,"sex":1,"gender":"남","alias":"nick"}
+
+  </script>
+</body>
+</html>

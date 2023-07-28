@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computed property - 계산된 프로퍼티</title>
+</head>
+<body>
+  <script>
+
+    let a = 'age';
+    const user = { //객체
+      name : 'Mike',
+      [a]: 30, // 변수 할당된 값이 들어감 age : 30
+    }
+
+    const user6 = {
+      [ 1 + 4 ] : 5,
+      ["안녕" + "하세요"] : "HELLO"
+    };
+
+  </script>
+</body>
+</html>
