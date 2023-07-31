@@ -19,6 +19,17 @@
       ["안녕" + "하세요"] : "HELLO"
     };
 
+
+    // 객체를 만들어주는 함수
+    function makeObj(key, val) {
+      return {
+        [key] : val
+      }
+    }
+
+    const obj = makeObj('name', 'Suji');
+    console.log(obj);
+
   </script>
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Symbol - 유일한 식별자를 만들 때 사용, new를 붙이지 않습니다.
+    // 유일성 보장
+    const a = Symbol();
+    const b = Symbol();
+
+    const id = Symbol('id');
+
+    const user = {
+      name: 'Suji',
+      age: 30,
+      [id]: 'myid'
+    }
+
+    console.log(user); // {name: 'Suji', age: 30, Symbol(id): 'myid'}
+    Object.keys(user); // ["name", "age"];
+    Object.values(user); // ["Suji", 30];
+    Object.entries(user); // [Array(2), Array(2)];
+
+    // 숨겨진 Symbol key보는 법
+    console.log(Object.getOwnPropertySymbols(user)); //[Symbol(id)]
+    console.log(Reflect.ownKeys(user)); // 심볼을 포함한 모든 key를 보여줌 ['name', 'age', Symbol(id)]
+    // Symbol.for(): 전역 심볼
+    // 하나의 심볼만 보장받을 수 있음
+    // 없으면 만들고, 있으면 가져오기 때문
+    // Symbol함수는 매번 다른 Symbol값을 생성하지만
+    // Symbol.for메소드는 하나를 생성한 뒤 키를 통해 같은 Symbol을 공유
+    const id1 = Symbol.for('id1');
+    const id2 = Symbol.for('id');
+    console.log(id1 === id2);
+    console.log(Symbol.keyFor(id2));
+    const id3 = Symbol('id입니다');
+    console.log(id3); // Symbol(id입니다)
+    console.log(id3.description); // id입니다.
+
+
+    
+  </script>
+</body>
+</html>
