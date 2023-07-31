@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 10진수 -> 2진수/16진수
+    let num = 10;
+
+    num.toString();
+    num.toString(2);
+
+    let num1 = 5.1;
+    let num2 = 5.7;
+
+    // Math.ceil() 올림
+    // Math.floor() 내림
+    // Math.round() 반올림
+    console.log(Math.ceil(num1)); // 6
+    console.log(Math.floor(num2)); // 5
+    console.log(Math.round(num1)); //5
+    console.log(Math.round(num2)); // 6
+
+    // 소수점 자릿수
+    let userRate = 30.1234;
+    
+    // 요구사항: 소수점 둘째자리까지 표현(셋째 자리에서 반올림)
+    userRate * 100 // 3012.34
+    Math.round(userRate * 100) // 3012
+    Math.round(userRate * 100) / 100 // 30.12
+
+    // 소수점 자릿수: toFixed(); -> *(주의) 문자열로 반환
+    // 요구사항: 소수점 둘째자리까지 표현(셋째 자리에서 반올림)
+    userRate.toFixed(2); // 30.12 
+    userRate.toFixed(0); // 30
+    userRate.toFixed(6); // 30.123400
+
+    Number(userRate.toFixed(2)); // Number를 통해 문자를 숫자로 반환하여 사용
+
+    // parseInt() - 정수만 반환(소수점 무시) / Number와 다른 점은 문자가 혼용되어 있어도 사용가능
+    let margin = '10px';
+    parseInt(margin); // 10
+    Number(margin); // NaN
+
+    let redColor = 'f3'; 
+    parseInt(redColor); // NaN 문자열로 시작하면 NaN을 반환함
+
+    // parseFloat() 소수점 반환
+    let padding = '18.5%';
+    parseInt(padding); // 18 
+    parseFloat(padding); // 18.5
+
+    // Math.random() - 0~1사이 무작위 숫자 생성 
+    // 반환 값 0.7460403897349739 무작위 숫자
+    
+    // 1~100사이 임의의 숫자를 뽑고 싶다면?
+    // Math.random() * 100 -> 0~100까지 반환 / 0 ~5까지 반환하고 싶으면 Math.random() * 5하면 됨 
+    // 0이 나올 수 있기 때문에 소수점은 버려주고 +1을 해줌
+    Math.floor(Math.random() * 100) + 1
+
+    // Math.max() / Math.min() 최대, 최소 값 구하기
+    Math.max(1, 4, -1, 5, 10, 9, 5, 5.54); // 10
+    Math.min(1, 4, -1, 5, 10, 9, 5, 5.54); // -1
+
+    // Math.abs() 절대값
+    Math.abs(-1); // 1
+
+    // Math.pow(n, m) 제곱
+    Math.pow(2, 10); // 2의 10승값 - 1024
+
+    // Math.sqrt() 제곱근
+    Math.sqrt(16); // 4
+
+  </script>
+</body>
+</html>
